@@ -1,0 +1,34 @@
+{
+  "name": "arena_club_tech_interview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:all": "TAGS='@smoke|@regression' playwright test",
+    "test:smoke": "TAGS=@smoke playwright test",
+    "test:regression": "TAGS=@regression playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:changed": "playwright test --only-changed",
+    "report": "playwright show-report .playwright/report",
+    "trace": "playwright show-trace",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "tsc --noEmit && eslint . && prettier --check ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22",
+    "dotenv": "^17",
+    "eslint": "^10.10.0",
+    "eslint-plugin-playwright": "^2.12.0",
+    "prettier": "^3.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.0"
+  }
+}

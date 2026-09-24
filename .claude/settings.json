@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": ["Bash(bun *)", "Bash(bunx *)", "Bash(npx playwright *)", "mcp__playwright-test__*"],
+    "deny": ["Read(./.env)", "Read(./.playwright/auth/**)"],
+    "additionalDirectories": ["/Users/okutafin/Projects/js/agent-tests-playbook"]
+  },
+  "enableAllProjectMcpServers": true
+}

@@ -1,0 +1,50 @@
+name: nightly
+
+# init-project: git flow, add push to release branches when the flow has them
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+  push:
+    branches: ['releases/**']
+
+# Every set is its own job with its own report, so one red set never hides another.
+# init-project: environments, the nightly environment and its tags
+jobs:
+  smoke:
+    uses: ./.github/workflows/run-tests.yml
+    secrets: inherit
+    permissions:
+      contents: read
+      actions: read
+      checks: write
+    with:
+      name: smoke
+      env: staging
+      tags: '@smoke'
+
+  regression:
+    uses: ./.github/workflows/run-tests.yml
+    secrets: inherit
+    permissions:
+      contents: read
+      actions: read
+      checks: write
+    with:
+      name: regression
+      env: staging
+      tags: '@regression'
+
+  # Quarantined tests report but never fail the night.
+  quarantine:
+    uses: ./.github/workflows/run-tests.yml
+    secrets: inherit
+    permissions:
+      contents: read
+      actions: read
+      checks: write
+    with:
+      name: quarantine
+      env: staging
+      tags: '@quarantine'
+      allow-failure: true

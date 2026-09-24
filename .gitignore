@@ -1,0 +1,22 @@
+# dependencies and build
+node_modules/
+
+# playwright output: reports, traces, results and the saved session
+.playwright/
+# the MCP browser tools' fixed output name; bootstrap links it into .playwright/mcp
+.playwright-mcp
+
+# secrets: the example file is the only env file committed
+.env
+.env.*
+!.env.example
+
+# session working files: one folder per task with its briefs and handoffs; drop the folder, the task is gone
+.claude/work/
+.claude/settings.local.json
+
+# editors, tools and os
+.idea/
+.vscode/
+.serena/
+.DS_Store
